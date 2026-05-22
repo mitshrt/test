@@ -138,7 +138,7 @@
   .q-num {
     font-family: 'DM Mono', monospace;
     font-size: 1.0rem;
-    color: (--success);
+    color: var(--success);
     letter-spacing: .15em;
   }
 
@@ -511,7 +511,6 @@ function startTimer(qId) {
   timerInterval = setInterval(() => {
     const elapsed = Math.floor((Date.now() - questionStartTime) / 1000);
     timings[qId] = (timings[qId] || 0) + 0; // will commit on leave
-    document.getElementById('timerDisplay').textContent = formatSeconds(elapsed);
   }, 1000);
 }
 
@@ -519,7 +518,6 @@ function stopTimer(qId) {
   clearInterval(timerInterval);
   if (questionStartTime) {
     const elapsed = Math.floor((Date.now() - questionStartTime) / 1000);
-    timings[qId] = (timings[qId] || 0) + elapsed;
     questionStartTime = null;
   }
 }
@@ -842,10 +840,3 @@ function restart() {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-</body>
