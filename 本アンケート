@@ -509,10 +509,10 @@ function startTimer(qId) {
   clearInterval(timerInterval);
   questionStartTime = Date.now();
   timerInterval = setInterval(() => {
-    const elapsed = Math.floor((Date.now() - questionStartTime) / 1000);
-    timings[qId] = (timings[qId] || 0) + 0; // will commit on leave
+    // 表示はしないが内部で時間を計測し続ける
   }, 1000);
 }
+
 
 function stopTimer(qId) {
   clearInterval(timerInterval);
@@ -620,7 +620,6 @@ function renderQuestion() {
   document.getElementById('skipBtn').style.display = q.required ? 'none' : 'inline';
 
   // Timer
-  document.getElementById('timerDisplay').textContent = formatSeconds(timings[q.id] || 0);
   startTimer(q.id);
 
   // Slide animation
